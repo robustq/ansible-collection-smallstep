@@ -1,4 +1,4 @@
 - include: install.yml
 
 - include: root_cert.yml
-  when: stepclient_ca_servers
+  when: stepclient_ca_servers | length > 0

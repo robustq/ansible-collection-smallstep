@@ -32,7 +32,6 @@
   register: stepca_config_file
 - name: Initialize CA
   include: init.yml
-  become_user: '{{ stepca_user }}'
   when: not stepca_config_file.stat.exists
 
 - name: Setup systemd service

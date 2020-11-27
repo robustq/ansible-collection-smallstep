@@ -39,6 +39,7 @@
     command: >
       {{ stepca_executable_path }}/step ca init --address={{ stepca_address }} {{ stepca_initcmd_keys }}
       {{ stepca_initcmd_ssh }} {{ stepca_initcmd_names }} {{ stepca_initcmd_passwords }}
+    become_user: '{{ stepca_user }}'
 
   - name: Get root CA fingerprint
     command: '{{ stepca_executable_path }}/step certificate fingerprint {{ stepca_home }}/.step/certs/root_ca.crt'
@@ -56,6 +57,7 @@
       exit 0
     args:
       executable: expect
+    become_user: '{{ stepca_user }}'
 
   - name: Remove initial provisioner
     maxhoesel.smallstep.ca_provisioner:
@@ -63,6 +65,7 @@
       type: JWK
       state: absent
       step_executable: '{{ stepca_executable_path }}/step'
+    become_user: '{{ stepca_user }}'
     when: stepca_provisioner_remove
     notify: restart step-ca
 

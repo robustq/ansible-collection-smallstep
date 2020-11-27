@@ -90,6 +90,9 @@ provisioner:
   name: ansible
   options:
     vvv: ${TESTENV_VERBOSE:-false}
+  config_options:
+    ssh_connection:
+      pipelining: yes
   env:
     ANSIBLE_KEEP_REMOTE_FILES: ${TESTENV_KEEP_REMOTE:-false}
     ANSIBLE_COLLECTIONS_PATH: ${TESTENV_COLLECTIONS:-~/.ansible/collections:/usr/share/ansible/collections}

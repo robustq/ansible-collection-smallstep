@@ -15,9 +15,8 @@
 - name: stepca_user exists
   user:
     name: '{{ stepca_user }}'
-    shell: /usr/sbin/nologin
-    password: '*'
     home: '{{ stepca_home }}'
+    system: yes
 - name: stepca_logdir exists
   file:
     path: '{{ stepca_logdir }}'

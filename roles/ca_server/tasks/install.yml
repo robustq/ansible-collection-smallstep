@@ -1,6 +1,8 @@
 - name: Install step client
   include_role:
     name: maxhoesel.smallstep.step_client
+  vars:
+    stepclient_ca_servers: []
 
 # These pipes squelch the "command not found" error message if the binary isn't installed yet.
 # Instead, they return "", which we simply use as our version string.
